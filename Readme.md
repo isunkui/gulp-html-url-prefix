@@ -15,7 +15,9 @@ npm i @isunkui/gulp-html-url-prefix-suffix -D
 ### options
 
 * options - type: `object`
-  - prefix: `string`, default ` `
+  - prefix: `String`, default ` `
+  - suffix: `Boolean`, default `false`
+  - attrdata: `Array`, default `["img:src", "img:srcset", "img:s-src", "img:data-src", "script:src", "link:href"]`
 
 ```js
 urlPrefix({
