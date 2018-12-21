@@ -1,7 +1,7 @@
 {
-  "name": "gulp-html-url-prefix",
-  "version": "0.1.2",
-  "description": "a gulp plugin for set html url prefix",
+  "name": "@isunkui/gulp-html-url-prefix-suffix",
+  "version": "0.1.0",
+  "description": "a gulp plugin for set html url prefix and suffix version.",
   "main": "index.js",
   "dependencies": {
     "balanced-match": "^0.2.1",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Justinidlerz/gulp-html-url-prefix.git"
+    "url": "git+https://github.com/isunkui/gulp-html-url-prefix-suffiix.git"
   },
   "devDependencies": {},
   "scripts": {
@@ -23,11 +23,13 @@
     "gulp",
     "html",
     "plugin",
-    "prefix"
+    "cdn prefix",
+    "prefix",
+    "suffix"
   ],
   "bugs": {
-    "url": "https://github.com/coderhaoxin/gulp-file-include/issues"
+    "url": "https://github.com/isunkui/gulp-html-url-prefix-suffiix/issues"
   },
-  "author": "idler",
+  "author": "isunkui",
   "license": "MIT"
 }

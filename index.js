@@ -4,14 +4,18 @@ var attrParse = require("./lib/attributesParser");
 var concat = require('concat-stream');
 var through = require('through2');
 var gutil = require('gulp-util');
-var fs = require('fs');
-var url = require('url');
 
+var combineURLs = function (baseURL, relativeURL) {
+    return relativeURL
+      ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+      : baseURL
+}
 
 module.exports = function(opts) {
 
     var prefix = opts && opts.prefix || "";
-    var attrs = ["img:src", "img:srcset", "img:data-src", "script:src", "link:href"];
+    var suffix = opts && opts.suffix;
+    var attrs = opts.attrdata || ["img:src", "img:srcset", "img:data-src", "script:src", "link:href"];
 
     function fileInclude(file, enc, cb) {
         if (file.isNull()) {
@@ -68,7 +72,9 @@ module.exports = function(opts) {
         content = [content];
         links.forEach(function(link) {
             if (/^http[s]?:\/\/|^\/\//i.test(link.value)) return;
-            var value = url.resolve(prefix, link.value);
+
+            var value = combineURLs(prefix, link.value)
+            if (suffix) value += '?v=' + Date.now();
 
             var x = content.pop();
             content.push(x.substr(link.start + link.length));

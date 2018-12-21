@@ -5,11 +5,11 @@
 [![Dependency status][david-img]][david-url] -->
 
 ### gulp-html-url-prefix
-a plugin of gulp for prefix url
+a plugin of gulp for cdn prefix or suffix version url
 
 ### install
 ```bash
-npm install gulp-html-url-prefix
+npm i @isunkui/gulp-html-url-prefix-suffix -D
 ```
 
 ### options
@@ -47,7 +47,9 @@ var urlPrefix = require('gulp-html-url-prefix'),
 gulp.task('url', function() {
   gulp.src(['index.html'])
     .pipe(urlPrefix({
-      prefix: '//cdn.xxx.com'
+      prefix: '//cdn.xxx.com',
+      suffix: true, // url末尾追加 ?v=1545376218218
+      attrdata: ["img:src", "img:srcset", "img:s-src", "img:data-src", "script:src", "link:href"]  //自定义标签属性
     }))
     .pipe(gulp.dest('./'));
 });
@@ -58,11 +60,11 @@ and the result is:
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="//cdn.xxx.com/css/example.css" />
+    <link href="//cdn.xxx.com/css/example.css?v=1545376218218" />
   </head>
   <body>
-    <img src="//cdn.xxx.com/example.jpg" />
-    <script type="text/javascript" src="//cdn.xxx.com/js/example.js"></script>
+    <img src="//cdn.xxx.com/example.jpg?v=1545376218218" />
+    <script type="text/javascript" src="//cdn.xxx.com/js/example.js?v=1545376218218"></script>
   </body>
 </html>
 ```
